@@ -37,8 +37,8 @@
 
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/Farmacia/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/Farmacia/Controller/ProdutoController.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Controller/ProdutoController.php";
 
 $produtoController = new ProdutoController($pdo);
 
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $produtoController->cadastrar($nome, $tipo, $quantidade, $validade, $marca, $preco, $formapagamento);
 
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
 }
 
 
