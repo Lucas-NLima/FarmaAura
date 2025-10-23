@@ -10,7 +10,7 @@ class FornecedoresController {
 
     public function listar () {
         $fornecedores = $this ->fornecedoresModel ->buscarTodos();
-        include_once "C:/Turma1/xampp/htdocs/Farmacia/View/Fornecedores/listar.php";
+        include_once "C:/Turma1/xampp/htdocs/FarmaAura/View/Fornecedores/listar.php";
         return;
     }
 
