@@ -12,5 +12,4 @@ $fornecedoresController = new FornecedoresController($pdo);
 $produto = $produtoController->listar();
 $fornecedores = $fornecedoresController->listar();
 
-
 ?>
