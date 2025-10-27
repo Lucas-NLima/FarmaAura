@@ -1,6 +1,6 @@
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Model/ProdutoModel.php";
+require_once "C:/Turma2/xampp/htdocs/FarmaAura/app/Model/ProdutoModel.php";
 
 class ProdutoController {
     private $produtoModel;
