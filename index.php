@@ -1,7 +1,9 @@
 <?php
-session_start();
-require_once "app/db/Database.php";
-require_once "app/controller/ProdutoController.php";
+
+require_once "app/DB/Database.php";
+require_once "app/Controller/ProdutoController.php";
+require_once "app/Controller/FornecedoresController.php";
+
 
 $produtoController = new ProdutoController($pdo);
 $produtos = $produtoController->listar();

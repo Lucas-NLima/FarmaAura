@@ -13,8 +13,9 @@ if ($_SESSION['usuario_cargo'] != 'admin' && $_SESSION['usuario_cargo'] != 'farm
 
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/FarmaAura/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/FarmaAura/Controller/FornecedoresController.php";
+
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Controller/FornecedoresController.php";
 
 
 $fornecedoresController = new FornecedoresController($pdo);
@@ -69,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $fornecedoresController->editar($nome, $tipo, $quantidade, $preco, $id);
 
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
 }
 
 

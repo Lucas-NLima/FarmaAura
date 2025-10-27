@@ -1,6 +1,6 @@
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/FarmaAura/Model/ProdutoModel.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Model/ProdutoModel.php";
 
 class ProdutoController {
     private $produtoModel;
@@ -10,7 +10,7 @@ class ProdutoController {
 
     public function listar () {
         $produtos = $this ->produtoModel ->buscarTodos();
-        include_once "app/view/Produto/listar.php";
+        include_once "C:/Turma1/xampp/htdocs/FarmaAura/app/View/Produto/listar.php";
         return;
     }
 

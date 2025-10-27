@@ -14,8 +14,9 @@ if ($_SESSION['usuario_cargo'] != 'admin' && $_SESSION['usuario_cargo'] != 'farm
 
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/FarmaAura/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/FarmaAura/Controller/ProdutoController.php";
+
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Controller/ProdutoController.php";
 
 
 $produtoController = new ProdutoController($pdo);
@@ -23,9 +24,9 @@ $produtoController = new ProdutoController($pdo);
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $produto = $produtoController->deletar($id);
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
 } else {
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
 }
 
 ?>
