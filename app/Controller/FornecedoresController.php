@@ -1,6 +1,6 @@
 <?php
 
-require_once "C:/Turma1/xampp/htdocs/Farmacia/Model/FornecedoresModel.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Model/FornecedoresModel.php";
 
 class FornecedoresController {
     private $fornecedoresModel;
@@ -10,7 +10,7 @@ class FornecedoresController {
 
     public function listar () {
         $fornecedores = $this ->fornecedoresModel ->buscarTodos();
-        include_once "C:/Turma1/xampp/htdocs/Farmacia/View/Fornecedores/listar.php";
+        include_once "C:/Turma1/xampp/htdocs/FarmaAura/app/View/Fornecedores/listar.php";
         return;
     }
 

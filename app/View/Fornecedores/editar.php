@@ -1,7 +1,21 @@
 <?php
+session_start();
 
-require_once "C:/Turma1/xampp/htdocs/Farmacia/DB/Database.php";
-require_once "C:/Turma1/xampp/htdocs/Farmacia/Controller/FornecedoresController.php";
+if (!isset($_SESSION['usuario_cargo'])) {
+    die("Acesso negado!");
+}
+
+if ($_SESSION['usuario_cargo'] != 'admin' && $_SESSION['usuario_cargo'] != 'farmaceutico') {
+    die("Acesso negado! Apenas farmacêuticos ou admin podem acessar.");
+}
+?>
+
+
+<?php
+
+
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
+require_once "C:/Turma1/xampp/htdocs/FarmaAura/app/Controller/FornecedoresController.php";
 
 
 $fornecedoresController = new FornecedoresController($pdo);
@@ -56,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $fornecedoresController->editar($nome, $tipo, $quantidade, $preco, $id);
 
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
 }
 
 
