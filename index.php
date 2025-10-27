@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once "app/DB/Database.php";
 require_once "app/Controller/ProdutoController.php";

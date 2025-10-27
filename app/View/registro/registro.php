@@ -1,6 +1,6 @@
 <?php
-require_once "../../db/Database.php";
-require_once "../../controller/RegistroController.php";
+require_once "c:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
+require_once "c:/Turma1/xampp/htdocs/FarmaAura/app/controller/RegistroController.php";
 
 $registro = new RegistroController($pdo);
 
