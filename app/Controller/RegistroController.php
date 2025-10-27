@@ -30,8 +30,8 @@ class RegistroController {
         $stmt->execute([$nome, $email, $senhaHash, $token]);
 
         // Envia e-mail de verificação
-        $this->enviarEmailVerificacao($email, $token);
-
+       $this->enviarEmailVerificacao($email, $token);
+      //obs: testar depois com o 5g
         return true;
     }
 
@@ -59,9 +59,8 @@ class RegistroController {
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Verifique seu cadastro';
-            $link = "http://localhost/FarmaAura/verificar.php?token=$token";
-            $mail->Body = "<h3>Bem-vindo!</h3><p>Para ativar sua conta, clique no link abaixo:</p><a href='$link'>$link</a>";
+            $mail->Subject = 'cadastro realizado com sucesso!!';
+            $mail->Body = "<h3>Bem-vindo!</h3> <p>Sua conta foi criada no sistema FarmaAura.";
 
             $mail->send();
         } catch (Exception $e) {

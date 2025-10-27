@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "../db/Database.php";
-require_once "../model/UsuarioModel.php";
+require_once "c:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
+require_once "c:/Turma1/xampp/htdocs/FarmaAura/app/model/UsuarioModel.php";
 
 $usuarioModel = new UsuarioModel($pdo);
 $msg = '';
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_cargo'] = $usuario['cargo'];
-            header("Location: ../../index.php");
+            header("Location: ../../../index.php");
             exit;
         }
     } else {
@@ -37,4 +37,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="password" name="senha" required><br><br>
     <button type="submit">Entrar</button>
 </form>
-<p><a href="registro.php">Cadastrar</a></p>
+<p><a href="../registro/registro.php">Cadastrar</a></p>
