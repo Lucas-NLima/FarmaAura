@@ -1,3 +1,18 @@
+
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario_cargo'])) {
+    die("Acesso negado!");
+}
+
+if ($_SESSION['usuario_cargo'] != 'admin' && $_SESSION['usuario_cargo'] != 'farmaceutico') {
+    die("Acesso negado! Apenas farmacêuticos ou admin podem acessar.");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

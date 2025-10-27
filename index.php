@@ -1,15 +1,15 @@
 <?php
-
-require_once "DB/Database.php";
-require_once "Controller/ProdutoController.php";
-require_once "Controller/FornecedoresController.php";
-
+session_start();
+require_once "app/db/Database.php";
+require_once "app/controller/ProdutoController.php";
 
 $produtoController = new ProdutoController($pdo);
-$fornecedoresController = new FornecedoresController($pdo);
+$produtos = $produtoController->listar();
 
+echo "<h1>Bem-vindo, {$_SESSION['usuario_nome']}</h1>";
 
-$produto = $produtoController->listar();
-$fornecedores = $fornecedoresController->listar();
+if ($_SESSION['usuario_cargo'] == 'admin') {
+    echo "<a href='app/view/Admin/usuarios.php'>Painel Admin</a><br>";
+}
 
-?>
+echo "<a href='logout.php'>Sair</a><br>";
