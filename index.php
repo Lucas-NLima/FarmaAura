@@ -34,7 +34,7 @@ echo "<a href='logout.php'>Sair</a><br>";
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
    <header class="navbar">
     <div class="logo">
-      <img src="img/Logo FarmaAura.png" alt="Farma Aura">
+      <img src="img/Logo-FarmaAura.png" alt="Farma Aura">
       
     </div>
     <div class="search-bar">
