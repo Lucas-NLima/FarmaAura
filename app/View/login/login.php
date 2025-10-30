@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../css/login.css">
+</head>
+<body>
+    
+
+
 <?php
 session_start();
 require_once "c:/Turma1/xampp/htdocs/FarmaAura/app/DB/Database.php";
@@ -27,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 <h2>Login</h2>
 <?php if($msg) echo "<p>$msg</p>"; ?>
 <form method="post">
@@ -38,3 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit">Entrar</button>
 </form>
 <p><a href="../registro/registro.php">Cadastrar</a></p>
+
+</body>
+</html>

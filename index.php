@@ -32,8 +32,8 @@ echo "<a href='logout.php'>Sair</a><br>";
     <h3>“Aura é o brilho invisível que envolve cada um de nós.
 Na FarmaAura, queremos manter esse brilho aceso <br> com cuidado, atenção e amor pela sua saúde.”</h3>
 <h4>Clique abaixo para se cadastrar ou efetuar seu login</h4>
-<input type="button" value="Cadastro" onclick="location.href='app/view/login.php'"/>
-<input type="button" value="Login" onclick="location.href='app/view/login.php'"/>
+<input type="button" value="Cadastro" onclick="location.href='app/view/login/login.php'"/>
+<input type="button" value="Login" onclick="location.href='app/view/login/login.php'"/>
 <h4>E para mais informações</h4>
 <input type="button" value="Mais Informações" onclick="location.href='maisinfo.php'"/>
 
