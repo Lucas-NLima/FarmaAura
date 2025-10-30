@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,9 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<link rel="stylesheet" href="css/style.css">
-<h2>Login</h2>
+<div class="container">
+    <img src="../../../img/Logo-FarmaAura.png" alt="logo" width="150px">
+
 <?php if($msg) echo "<p>$msg</p>"; ?>
+
+
 <form method="post">
     <label>Email:</label><br>
     <input type="email" name="email" required><br>
@@ -50,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit">Entrar</button>
 </form>
 <p><a href="../registro/registro.php">Cadastrar</a></p>
+</div>
 
 </body>
 </html>

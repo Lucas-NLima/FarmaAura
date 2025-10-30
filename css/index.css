@@ -25,7 +25,7 @@ body {
 }
 img{
       width: 150px;     
-  height: auto;     /* mantém a proporção */
+  height: auto;
 }
 
 
@@ -53,7 +53,6 @@ img{
   color: var(--verde);
 }
 
-/* ======== CATEGORIAS ======== */
 .categorias {
   display: flex;
   justify-content: center;
@@ -78,7 +77,7 @@ img{
   color: #fff;
 }
 
-/* ======== BANNER ======== */
+
 .banner {
   display: flex;
   align-items: center;
@@ -117,7 +116,6 @@ img{
   background-color: #145a40;
 }
 
-/* ======== CONTEÚDO ======== */
 .conteudo {
   text-align: center;
   padding: 50px 20px;
@@ -128,7 +126,6 @@ img{
   margin-bottom: 10px;
 }
 
-/* ======== SAIR ======== */
 .sair {
   color: var(--verde);
   text-decoration: underline;
@@ -138,7 +135,6 @@ img{
   color: #145a40;
 }
 
-/* ======== RODAPÉ ======== */
 .rodape {
   background-color: #fff;
   padding: 15px;
