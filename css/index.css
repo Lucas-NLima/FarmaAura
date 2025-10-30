@@ -1,0 +1,149 @@
+:root {
+  --verde:#d3b305;
+  --verde-claro: #eee3a8;
+  --amarelo: #eee3a8;
+  --bege: #faf6ea;
+  --texto: #333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bege);
+  color: var(--texto);
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 15px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+img{
+      width: 150px;     
+  height: auto;     /* mantém a proporção */
+}
+
+
+.logo h1 {
+  color: var(--verde);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.search-bar input {
+  width: 350px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+}
+
+.menu-icons a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: var(--texto);
+  font-size: 0.9rem;
+}
+
+.menu-icons a:hover {
+  color: var(--verde);
+}
+
+/* ======== CATEGORIAS ======== */
+.categorias {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.categorias a {
+  background-color: var(--amarelo);
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--texto);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.categorias a:hover {
+  background-color: var(--verde);
+  color: #fff;
+}
+
+/* ======== BANNER ======== */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--verde-claro);
+  padding: 40px 80px;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.banner-texto h2 {
+  font-size: 1.8rem;
+  color: var(--verde);
+}
+
+.banner-texto p {
+  margin: 10px 0 20px;
+}
+
+.banner img {
+  width: 320px;
+}
+
+.botao {
+  background-color: var(--verde);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.botao:hover {
+  background-color: #145a40;
+}
+
+/* ======== CONTEÚDO ======== */
+.conteudo {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.conteudo h2 {
+  color: var(--verde);
+  margin-bottom: 10px;
+}
+
+/* ======== SAIR ======== */
+.sair {
+  color: var(--verde);
+  text-decoration: underline;
+}
+
+.sair:hover {
+  color: #145a40;
+}
+
+/* ======== RODAPÉ ======== */
+.rodape {
+  background-color: #fff;
+  padding: 15px;
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
