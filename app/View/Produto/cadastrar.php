@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $produtoController->cadastrar($nome, $tipo, $quantidade, $validade, $marca, $preco, $formapagamento);
 
-    header('Location: ../../../index.php');
+    header('Location: ../../../Adm.php');
 }
 
 
