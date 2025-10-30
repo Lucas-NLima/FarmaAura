@@ -11,7 +11,7 @@ class ProdutoController {
     public function listar () {
         $produtos = $this ->produtoModel ->buscarTodos();
         include_once "C:/Turma1/xampp/htdocs/FarmaAura/app/View/Produto/listar.php";
-        return;
+        return $produtos;
     }
 
 public function buscarProduto($id) {

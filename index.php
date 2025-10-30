@@ -7,15 +7,14 @@ require_once "c:Turma1/xampp/htdocs/FarmaAura/app/db/Database.php";
 require_once "c:Turma1/xampp/htdocs/FarmaAura/app/Controller/ProdutoController.php";
 require_once "c:Turma1/xampp/htdocs/FarmaAura/app/Controller/FornecedoresController.php";
 
+
+
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_nome'])) {
     header("Location: app/view/login/login.php");
     exit;
 }
 
-// Instancia os controladores
-$produtoController = new ProdutoController($pdo);
-$produtos = $produtoController->listar();
 
 
 
@@ -46,7 +45,8 @@ $produtos = $produtoController->listar();
       <input type="text" placeholder="Buscar na Farma Aura">  
     </div>
     <div class="menu-icons">
-      <a href="Adm.php">Adm</a>
+      <a href="app/view/Admin/Adm.php">Adm</a>
+      <a href="logout.php">Sair</a>
       <a href="#">Meus pedidos</a>
       <a href="#">Cesta (R$0,00)</a>
     </div>

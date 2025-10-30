@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $fornecedoresController->cadastrar($nome, $tipo, $quantidade, $preco);
 
-    header('Location: ../../../index.php');
+    header('Location: ../../../Adm.php');
 }
 
 
