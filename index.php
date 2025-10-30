@@ -17,30 +17,23 @@
     <div class="search-bar">
       <input type="text" placeholder="Buscar na Farma Aura">
     </div>
+    <h4>Clique para se cadastrar ou efetuar seu login</h4>
     <div class="menu-icons">
-      <a href="#">Entrar ou cadastrar</a>
+      <a href="app/view/login/login.php">Entrar ou cadastrar</a>
       <a href="#">Meus pedidos</a>
       <a href="#">Cesta (R$0,00)</a>
     </div>
   </header>
    
-  <nav class="categorias">
-    <a href="#">Mais Buscados</a>
-    <a href="#">Serviços e Vacinas</a>
-    <a href="#">Manipulação</a>
-    <a href="#">Queridinhos</a>
-    <a href="#">Cupons</a>
-    <a href="#">Perfumes</a>
-    <a href="#">Dose Certa</a>
   </nav>
 
   <section class="banner">
     <div class="banner-texto">
-      <h2>Abasteça sua farmacinha 💊</h2>
+      <h3>Abasteça sua farmácia💊</h3>
       <p>Com até <strong>25% de desconto</strong> nos seus produtos favoritos.</p>
       <a href="#" class="botao">Confira</a>
     </div>
-    <img src="img/remedios.png" alt="Remédios em promoção">
+    <img src="img/carmed.png" alt="Remédios em promoção">
       <main class="conteudo">
   
     <p>Cuide da sua saúde com brilho, amor e bem-estar.</p>
@@ -52,7 +45,7 @@
   </footer>
 
   
-<h4>Clique abaixo para se cadastrar ou efetuar seu login</h4>
+
 
 
 <?php
