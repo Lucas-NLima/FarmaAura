@@ -1,33 +1,42 @@
-
 <?php
 session_start();
 
 
 
-require_once "app/DB/Database.php";
-require_once "app/Controller/ProdutoController.php";
-require_once "app/Controller/FornecedoresController.php";
+require_once "c:Turma1/xampp/htdocs/FarmaAura/app/db/Database.php";
+require_once "c:Turma1/xampp/htdocs/FarmaAura/app/Controller/ProdutoController.php";
+require_once "c:Turma1/xampp/htdocs/FarmaAura/app/Controller/FornecedoresController.php";
 
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario_nome'])) {
+    header("Location: app/view/login/login.php");
+    exit;
+}
+
+// Instancia os controladores
 $produtoController = new ProdutoController($pdo);
 $produtos = $produtoController->listar();
 
-echo "<h1>Bem-vindo, {$_SESSION['usuario_nome']}</h1>";
 
+// Se o usuário for admin, mostra o link do painel
 if ($_SESSION['usuario_cargo'] == 'admin') {
     echo "<a href='app/view/Admin/usuarios.php'>Painel Admin</a><br>";
 }
 
-echo "<a href='logout.php'>Sair</a><br>";
+
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Inicial</title>
+    <title>Página Inicial</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
    <link rel="stylesheet" href="css/index.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
