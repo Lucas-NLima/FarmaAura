@@ -16,16 +16,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <link rel="stylesheet" href="../../../css/registro.css">
 
-<h2>Registro</h2>
 <form method="post">
+    <h2>Crie sua conta:</h2>
     <label>Nome:</label><br>
     <input type="text" name="nome" required><br><br>
     <label>Email:</label><br>
     <input type="email" name="email" required><br><br>
     <label>Senha:</label><br>
     <input type="password" name="senha" required><br><br>
+
     <button type="submit">Registrar</button>
+
 </form>
 
-<p>Já tem conta? <a href='../login/login.php'>Entre aqui</a></p>
+</body>
+</html>
