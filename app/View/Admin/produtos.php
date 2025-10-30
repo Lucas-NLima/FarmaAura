@@ -1,35 +1,40 @@
 <link rel="stylesheet" href="../../../css/adm.css">
-
 <?php
 session_start();
 require_once "../../db/Database.php";
+require_once "../../controller/ProdutoController.php";
 
-# Somente admin pode acessar
+# Apenas admin pode acessar
 if (!isset($_SESSION['usuario_cargo']) || $_SESSION['usuario_cargo'] != 'admin') {
     die("Acesso negado! Apenas administradores podem acessar esta página.");
 }
 
-# Lista todos os usuários
-$stmt = $pdo->query("SELECT id, nome, email, cargo, verificado FROM usuarios");
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$produtoController = new ProdutoController($pdo);
+$produtos = $produtoController->listar();
+
+# Se o formulário foi enviado (adicionar)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $preco = $_POST['preco'];
+    $quantidade = $_POST['quantidade'];
+    $produtoController->criar($nome, $descricao, $preco, $quantidade);
+    header("Location: produtos.php");
+    exit;
+}
+
+# Se for para excluir
+if (isset($_GET['excluir'])) {
+    $produtoController->excluir($_GET['excluir']);
+    header("Location: produtos.php");
+    exit;
+}
 ?>
 
-<h2>Painel Administrativo</h2>
-<p><a href='Adm.php'>← Voltar</a></p>
+<h2>Gerenciar Produtos</h2>
+<p><a href="Adm.php">← Voltar</a></p>
 
 
-
-<table border="1" cellpadding="8">
-    <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Cargo</th>
-        <th>Verificado</th>
-        <th>Ações</th>
-    </tr>
-
-   
 <canvas id="background"></canvas>
 <script>
 const canvas = document.getElementById('background');
@@ -72,3 +77,5 @@ function draw() {
 
 draw();
 </script>
+
+

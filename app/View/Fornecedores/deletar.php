@@ -23,9 +23,9 @@ $fornecedoresController = new FornecedoresController($pdo);
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $fornecedores = $fornecedoresController->deletar($id);
-    header('Location: ../../../index.php');
+    header('Location: ../Admin/Adm.php');
 } else {
-    header('Location: ../../../index.php');
+    header('Location: ../Admin/Adm.php');
 }
 
 ?>

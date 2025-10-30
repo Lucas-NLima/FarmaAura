@@ -23,7 +23,6 @@
             echo "<td>{$produto['validade']}</td>";
             echo "<td>{$produto['marca']}</td>";
             echo "<td>{$produto['preco']}</td>";
-            echo "<td>{$produto['formapagamento']}</td>";
             echo "<td>
             <a href='app/View/Produto/editar.php?id={$id}'>Editar</a> |
             <a href='app/View/Produto/deletar.php?id={$id}' onclick=\"return confirm ('Tem certeza que deseja excluir este produto?')\" >Deletar</a> 
