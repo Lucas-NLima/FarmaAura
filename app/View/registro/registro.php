@@ -28,4 +28,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button type="submit">Registrar</button>
 </form>
 
-<p>Já tem conta? <a href='../Login/login.php'>Entre aqui</a></p>
+<p>Já tem conta? <a href='../login/login.php'>Entre aqui</a></p>

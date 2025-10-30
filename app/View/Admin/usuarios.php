@@ -13,7 +13,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h2>Painel Administrativo</h2>
-<p><a href='../../index.php'>← Voltar</a></p>
+<p><a href='../../../index.php'>← Voltar</a></p>
 
 <table border="1" cellpadding="8">
     <tr>
