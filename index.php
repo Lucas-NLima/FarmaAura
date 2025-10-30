@@ -18,10 +18,6 @@ $produtoController = new ProdutoController($pdo);
 $produtos = $produtoController->listar();
 
 
-// Se o usuário for admin, mostra o link do painel
-if ($_SESSION['usuario_cargo'] == 'admin') {
-    echo "<a href='app/view/Admin/usuarios.php'>Painel Admin</a><br>";
-}
 
 
 ?>
@@ -47,11 +43,10 @@ if ($_SESSION['usuario_cargo'] == 'admin') {
       
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="Buscar na Farma Aura">
+      <input type="text" placeholder="Buscar na Farma Aura">  
     </div>
-    <h4>Clique para se cadastrar ou efetuar seu login</h4>
     <div class="menu-icons">
-      <a href="app/view/login/login.php">Entrar ou cadastrar</a>
+      <a href="Adm.php">Adm</a>
       <a href="#">Meus pedidos</a>
       <a href="#">Cesta (R$0,00)</a>
     </div>
@@ -65,7 +60,7 @@ if ($_SESSION['usuario_cargo'] == 'admin') {
       <p>Com até <strong>25% de desconto</strong> nos seus produtos favoritos.</p>
       <a href="#" class="botao">Confira</a>
     </div>
-    <img src="img/carmed.png" alt="Remédios em promoção">
+    <img src="img/Srmed.png" alt="Remédios em promoção">
       <main class="conteudo">
   
     <p>Cuide da sua saúde com brilho, amor e bem-estar.</p>
