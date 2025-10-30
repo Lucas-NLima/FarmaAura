@@ -1,3 +1,26 @@
+
+<?php
+session_start();
+
+
+
+require_once "app/DB/Database.php";
+require_once "app/Controller/ProdutoController.php";
+require_once "app/Controller/FornecedoresController.php";
+
+$produtoController = new ProdutoController($pdo);
+$produtos = $produtoController->listar();
+
+echo "<h1>Bem-vindo, {$_SESSION['usuario_nome']}</h1>";
+
+if ($_SESSION['usuario_cargo'] == 'admin') {
+    echo "<a href='app/view/Admin/usuarios.php'>Painel Admin</a><br>";
+}
+
+echo "<a href='logout.php'>Sair</a><br>";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +67,7 @@
       <main class="conteudo">
   
     <p>Cuide da sua saúde com brilho, amor e bem-estar.</p>
-    <a href="logout.php" class="sair">Sair</a>
+   
   </main>
 </section>
   <footer class="rodape">
@@ -52,26 +75,7 @@
   </footer>
 
   
-<h4>Clique abaixo para se cadastrar ou efetuar seu login</h4>
 
 
-<?php
-session_start();
 
-require_once "app/DB/Database.php";
-require_once "app/Controller/ProdutoController.php";
-require_once "app/Controller/FornecedoresController.php";
-
-
-$produtoController = new ProdutoController($pdo);
-$produtos = $produtoController->listar();
-
-echo "<h1>Bem-vindo, {$_SESSION['usuario_nome']}</h1>";
-
-if ($_SESSION['usuario_cargo'] == 'admin') {
-    echo "<a href='app/view/Admin/usuarios.php'>Painel Admin</a><br>";
-}
-
-echo "<a href='logout.php'>Sair</a><br>";
-?>
 </html>
