@@ -46,7 +46,7 @@
     <p>Cuide da sua saúde com brilho, amor e bem-estar.</p>
     <a href="logout.php" class="sair">Sair</a>
   </main>
-
+</section>
   <footer class="rodape">
     &copy; 2025 Farma Aura — Cuidando da sua energia e bem-estar 🌼
   </footer>
@@ -73,3 +73,5 @@ if ($_SESSION['usuario_cargo'] == 'admin') {
 }
 
 echo "<a href='logout.php'>Sair</a><br>";
+?>
+</html>
