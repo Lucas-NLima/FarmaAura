@@ -31,7 +31,3 @@ if ($_SESSION['usuario_cargo'] == 'admin') {
 }
 
 echo "<a href='logout.php'>Sair</a><br>";
-?>
-</body>
-</html>
-

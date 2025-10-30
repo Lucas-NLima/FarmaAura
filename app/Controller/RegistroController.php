@@ -30,7 +30,7 @@ class RegistroController {
         $stmt->execute([$nome, $email, $senhaHash, $token]);
 
         // Envia e-mail de verificação
-       $this->enviarEmailVerificacao($email, $token);
+       //$this->enviarEmailVerificacao($email, $token); comentado durante teste depois se quiser descomentar
       //obs: testar depois com o 5g
         return true;
     }
