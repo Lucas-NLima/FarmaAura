@@ -60,7 +60,7 @@ $produtos = $produtoController->listar();
       <p>Com até <strong>25% de desconto</strong> nos seus produtos favoritos.</p>
       <a href="#" class="botao">Confira</a>
     </div>
-    <img src="img/Srmed.png" alt="Remédios em promoção">
+    <img src="img/carmed.png" alt="Remédios em promoção">
       <main class="conteudo">
   
     <p>Cuide da sua saúde com brilho, amor e bem-estar.</p>
