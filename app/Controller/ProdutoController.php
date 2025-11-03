@@ -21,7 +21,7 @@ public function buscarProduto($id) {
 
 
  public function cadastrar($nome, $tipo, $quantidade, $validade, $marca, $preco, $formapagamento) {
-    return $this->produtoModel-> cadastrar($nome, $tipo, $quantidade, $validade,$marca, $preco, $formapagamento);
+    return $this->produtoModel-> cadastrar($nome, $tipo, $quantidade, $validade,$marca, $preco);
  }
 
 

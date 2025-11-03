@@ -1,81 +1,96 @@
-
-<link rel="stylesheet" href="../../../css/adm.css">
 <?php
-
 session_start();
 require_once "../../db/Database.php";
-require_once "../../controller/FornecedoresController.php";
 
-# Apenas admin pode acessar
+// Verifica permissão
 if (!isset($_SESSION['usuario_cargo']) || $_SESSION['usuario_cargo'] != 'admin') {
-    die("Acesso negado! Apenas administradores podem acessar esta página.");
+    die("<div style='text-align:center; margin-top:50px; font-family:sans-serif;'>
+        <h2 style='color:#b00020;'>🚫 Acesso negado!</h2>
+        <p>Somente administradores podem acessar esta página.</p>
+        <a href='../../../Adm.php'>Voltar</a>
+    </div>");
 }
 
-$fornecedoresController = new FornecedoresController($pdo);
-$fornecedores = $fornecedoresController->listar();
+// Adicionar fornecedor
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["adicionar"])) {
+    $nome = $_POST["nome"];
+    $contato = $_POST["contato"];
+    $email = $_POST["email"];
 
-# Adicionar fornecedor
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $fornecedoresController->criar($nome, $email, $telefone);
-    header("Location: fornecedores.php");
-    exit;
+    $stmt = $pdo->prepare("INSERT INTO fornecedores (nome, contato, email) VALUES (?, ?, ?)");
+    $stmt->execute([$nome, $contato, $email]);
 }
 
-# Excluir fornecedor
-if (isset($_GET['excluir'])) {
-    $fornecedoresController->excluir($_GET['excluir']);
-    header("Location: fornecedores.php");
-    exit;
+// Editar fornecedor
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["editar"])) {
+    $id = $_POST["id"];
+    $nome = $_POST["nome"];
+    $contato = $_POST["contato"];
+    $email = $_POST["email"];
+
+    $stmt = $pdo->prepare("UPDATE fornecedores SET nome=?, contato=?, email=? WHERE id=?");
+    $stmt->execute([$nome, $contato, $email, $id]);
 }
+
+// Excluir fornecedor
+if (isset($_GET["excluir"])) {
+    $id = $_GET["excluir"];
+    $pdo->prepare("DELETE FROM fornecedores WHERE id=?")->execute([$id]);
+}
+
+// Listar fornecedores
+$stmt = $pdo->query("SELECT * FROM fornecedores ORDER BY id DESC");
+$fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<h2>Gerenciar Fornecedores</h2>
-<p><a href="Adm.php">← Voltar</a></p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Fornecedores - FarmaAura</title>
+    <link rel="stylesheet" href="../../../css/adm.css">
+</head>
+<body>
+<div class="admin-container">
+    <div class="admin-box" style="width:800px;">
+        <h1>🏭 Gerenciar Fornecedores</h1>
+        <p><a href='Adm.php'>← Voltar</a></p>
 
+        <h3>Adicionar Novo Fornecedor</h3>
+        <form method="POST">
+            <input type="text" name="nome" placeholder="Nome do fornecedor" required><br>
+            <input type="text" name="contato" placeholder="Telefone ou WhatsApp" required><br>
+            <input type="email" name="email" placeholder="E-mail" required><br>
+            <button type="submit" name="adicionar">Adicionar</button>
+        </form>
 
-<canvas id="background"></canvas>
-<script>
-const canvas = document.getElementById('background');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const particles = [];
-const numParticles = 40;
-
-for (let i = 0; i < numParticles; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 6 + 2,
-    dx: (Math.random() - 0.5) * 1.2,
-    dy: (Math.random() - 0.5) * 1.2,
-  });
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let p of particles) {
-    ctx.beginPath();
-    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-    gradient.addColorStop(0, 'rgba(43,182,115,0.8)');
-    gradient.addColorStop(1, 'rgba(43,182,115,0)');
-    ctx.fillStyle = gradient;
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fill();
-
-    p.x += p.dx;
-    p.y += p.dy;
-
-    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-  }
-  requestAnimationFrame(draw);
-}
-
-draw();
-</script>
-
+        <h3>Fornecedores Cadastrados</h3>
+        <table border="1" cellpadding="8" style="width:100%; border-collapse:collapse;">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Contato</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($fornecedores as $f): ?>
+            <tr>
+                <form method="POST">
+                    <td><?= $f['id'] ?></td>
+                    <td><input type="text" name="nome" value="<?= htmlspecialchars($f['nome']) ?>"></td>
+                    <td><input type="text" name="contato" value="<?= htmlspecialchars($f['contato']) ?>"></td>
+                    <td><input type="email" name="email" value="<?= htmlspecialchars($f['email']) ?>"></td>
+                    <td>
+                        <input type="hidden" name="id" value="<?= $f['id'] ?>">
+                        <button type="submit" name="editar">💾</button>
+                        <a href="?excluir=<?= $f['id'] ?>" onclick="return confirm('Excluir este fornecedor?')">🗑️</a>
+                    </td>
+                </form>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>
+<div class="background-animation"></div>
+</body>
+</html>
