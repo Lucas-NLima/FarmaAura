@@ -143,3 +143,42 @@ img{
   font-size: 0.9rem;
   border-top: 1px solid #ddd;
 }
+
+.produtos{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+h2{
+    text-align: center;
+}
+.produto-card{
+      background-color: #fff; 
+  border: 2px solid #eee3a8;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  width: 230px;
+  padding: 20px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
+  
+}
+
+.produto-card img{
+    padding: 30px;
+}
+.produto-card h3{
+    text-align: center;
+}
+
+.preco{
+    text-align: center;
+    color: red;
+}
+.button{
+    text-align: center;
+}
+
