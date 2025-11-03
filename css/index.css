@@ -164,6 +164,8 @@ h2{
   padding: 20px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   align-items: center;
+  display: flex;
+    flex-direction: column;
   
 }
 
