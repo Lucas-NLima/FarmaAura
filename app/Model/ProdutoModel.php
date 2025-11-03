@@ -23,7 +23,7 @@ return $stmt->execute( [
     ':validade' => $validade,
     ':marca' => $marca,
     ':preco' => $preco,
-    ':formapagamento' => $formapagamento
+   
 ]);
 
 
