@@ -76,7 +76,7 @@ if (!isset($_SESSION['usuario_nome'])) {
             <div class="produtos-container">
                 <div class="produto-card">
                     <img src="img/creme.png" alt="Creme hidratante">
-                    <h3>Creme Hidratante Care</h3>
+                    <h3>Creme Hidratante CeraVe</h3>
                     <p class="preco">R$ 89,90</p>
                     <button>Adicionar ao carrinho </button>
                 </div>
