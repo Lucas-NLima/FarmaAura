@@ -87,7 +87,56 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Gerenciar Produtos - FarmaAura</title>
-    <link rel="stylesheet" href="../../../css/adm.css">
+    <link rel="stylesheet" href="../../../css/editores.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background: #00796b;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        button {
+            background-color: #00796b;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .grafico-container {
+            margin-top: 40px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 <div class="admin-container">
@@ -108,42 +157,81 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </form>
 
         <h3>Produtos Cadastrados</h3>
-        <table border="1" cellpadding="4" style="width:100%; border-collapse:collapse; font-size:14px;">
-            <tr style="background:#00796b; color:white;">
-                <th>ID</th>
-                <th>Tipo</th>
-                <th>Nome</th>
-                <th>Validade</th>
-                <th>Qtd</th>
-                <th>Marca</th>
-                <th>Preço (R$)</th>
-                <th>Imagem</th>
-                <th>Ações</th>
-            </tr>
-            <?php foreach ($produtos as $p): ?>
-            <tr>
-                <form method="POST" enctype="multipart/form-data">
-                    <td><?= $p['id'] ?></td>
-                    <td><input type="text" name="tipo" value="<?= htmlspecialchars($p['tipo']) ?>"></td>
-                    <td><input type="text" name="nome" value="<?= htmlspecialchars($p['nome']) ?>"></td>
-                    <td><input type="date" name="validade" value="<?= $p['validade'] ?>"></td>
-                    <td><input type="number" name="quantidade" value="<?= $p['quantidade'] ?>"></td>
-                    <td><input type="text" name="marca" value="<?= htmlspecialchars($p['marca']) ?>"></td>
-                    <td><input type="number" step="0.01" name="preco" value="<?= $p['preco'] ?>"></td>
-                    <td>
-                        <img src="../../../img/<?= htmlspecialchars($p['imagem'] ?? 'default.png') ?>" width="50"><br>
-                        <input type="file" name="imagem" accept="image/*">
-                    </td>
-                    <td>
-                        <input type="hidden" name="id" value="<?= $p['id'] ?>">
-                        <button type="submit" name="editar">💾</button>
-                        <a href="?excluir=<?= $p['id'] ?>" onclick="return confirm('Deseja excluir este produto?')">🗑️</a>
-                    </td>
-                </form>
-            </tr>
-            <?php endforeach; ?>
-        </table>
+        <div class="table-container">
+            <table border="1" cellpadding="4">
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Nome</th>
+                    <th>Validade</th>
+                    <th>Qtd</th>
+                    <th>Marca</th>
+                    <th>Preço (R$)</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+                <?php foreach ($produtos as $p): ?>
+                <tr>
+                    <form method="POST" enctype="multipart/form-data">
+                        <td><?= $p['id'] ?></td>
+                        <td><input type="text" name="tipo" value="<?= htmlspecialchars($p['tipo']) ?>"></td>
+                        <td><input type="text" name="nome" value="<?= htmlspecialchars($p['nome']) ?>"></td>
+                        <td><input type="date" name="validade" value="<?= $p['validade'] ?>"></td>
+                        <td><input type="number" name="quantidade" value="<?= $p['quantidade'] ?>"></td>
+                        <td><input type="text" name="marca" value="<?= htmlspecialchars($p['marca']) ?>"></td>
+                        <td><input type="number" step="0.01" name="preco" value="<?= $p['preco'] ?>"></td>
+                        <td>
+                            <img src="../../../img/<?= htmlspecialchars($p['imagem'] ?? 'default.png') ?>" width="50"><br>
+                            <input type="file" name="imagem" accept="image/*">
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" value="<?= $p['id'] ?>">
+                            <button type="submit" name="editar">💾</button>
+                            <a href="?excluir=<?= $p['id'] ?>" onclick="return confirm('Deseja excluir este produto?')">🗑️</a>
+                        </td>
+                    </form>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+        <!-- GRÁFICO -->
+        <div class="grafico-container">
+            <h3>📊 Gráfico de Produtos por Tipo</h3>
+            <canvas id="graficoProdutos"></canvas>
+        </div>
     </div>
 </div>
+
+<script>
+const ctx = document.getElementById('graficoProdutos');
+const dados = <?= json_encode($produtos) ?>;
+
+// Contar produtos por tipo
+const contagem = {};
+dados.forEach(p => {
+  contagem[p.tipo] = (contagem[p.tipo] || 0) + 1;
+});
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: Object.keys(contagem),
+    datasets: [{
+      label: 'Quantidade de Produtos',
+      data: Object.values(contagem),
+      borderWidth: 1,
+      backgroundColor: '#00796b'
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: true }
+    }
+  }
+});
+</script>
+
 </body>
 </html>

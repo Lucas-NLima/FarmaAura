@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $senha = $_POST['senha'];
 
     if ($registro->registrar($nome, $email, $senha)) {
-        echo "<p style='color: green; text-align: center; margin-top: 20px;'>Conta criada! Verifique seu email.</p>";
+        echo "<p style='color: green; text-align: center; margin-top: 580px; margin-right: -310px;'>Conta criada! Verifique seu email.</p>";
 
     } else {
-        echo "<p style='color:red;  text-align: center;  margin-top: 20px;''>Erro ao registrar. Email já cadastrado?</p>";
+        echo "<p style='color:red;  text-align: center;  margin-top: 580px; margin-right: -310px;'>Erro ao registrar. Email já cadastrado?</p>";
     }
 }
 ?>

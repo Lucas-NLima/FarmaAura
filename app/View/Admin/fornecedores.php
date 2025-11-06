@@ -48,11 +48,11 @@ $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Gerenciar Fornecedores - FarmaAura</title>
-    <link rel="stylesheet" href="../../../css/adm.css">
+    <link rel="stylesheet" href="../../../css/editores.css">
 </head>
 <body>
 <div class="admin-container">
-    <div class="admin-box" style="width:800px;">
+    <div class="admin-box" style="width:850px;">
         <h1>🏭 Gerenciar Fornecedores</h1>
         <p><a href='Adm.php'>← Voltar</a></p>
 
@@ -61,36 +61,37 @@ $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="text" name="nome" placeholder="Nome do fornecedor" required><br>
             <input type="text" name="contato" placeholder="Telefone ou WhatsApp" required><br>
             <input type="email" name="email" placeholder="E-mail" required><br>
-            <button type="submit" name="adicionar">Adicionar</button>
+            <button type="submit" name="adicionar">Adicionar Fornecedor</button>
         </form>
 
         <h3>Fornecedores Cadastrados</h3>
-        <table border="1" cellpadding="8" style="width:100%; border-collapse:collapse;">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Contato</th>
-                <th>Email</th>
-                <th>Ações</th>
-            </tr>
-            <?php foreach ($fornecedores as $f): ?>
-            <tr>
-                <form method="POST">
-                    <td><?= $f['id'] ?></td>
-                    <td><input type="text" name="nome" value="<?= htmlspecialchars($f['nome']) ?>"></td>
-                    <td><input type="text" name="contato" value="<?= htmlspecialchars($f['contato']) ?>"></td>
-                    <td><input type="email" name="email" value="<?= htmlspecialchars($f['email']) ?>"></td>
-                    <td>
-                        <input type="hidden" name="id" value="<?= $f['id'] ?>">
-                        <button type="submit" name="editar">💾</button>
-                        <a href="?excluir=<?= $f['id'] ?>" onclick="return confirm('Excluir este fornecedor?')">🗑️</a>
-                    </td>
-                </form>
-            </tr>
-            <?php endforeach; ?>
-        </table>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Contato</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+                <?php foreach ($fornecedores as $f): ?>
+                <tr>
+                    <form method="POST">
+                        <td><?= $f['id'] ?></td>
+                        <td><input type="text" name="nome" value="<?= htmlspecialchars($f['nome']) ?>"></td>
+                        <td><input type="text" name="contato" value="<?= htmlspecialchars($f['contato']) ?>"></td>
+                        <td><input type="email" name="email" value="<?= htmlspecialchars($f['email']) ?>"></td>
+                        <td>
+                            <input type="hidden" name="id" value="<?= $f['id'] ?>">
+                            <button type="submit" name="editar">💾</button>
+                            <a href="?excluir=<?= $f['id'] ?>" onclick="return confirm('Excluir este fornecedor?')">🗑️</a>
+                        </td>
+                    </form>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
     </div>
 </div>
-<div class="background-animation"></div>
 </body>
 </html>

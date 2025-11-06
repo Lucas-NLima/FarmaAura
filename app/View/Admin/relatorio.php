@@ -153,7 +153,8 @@ canvas {
             <?php endforeach; ?>
         </table>
 
-        <canvas id="grafico"></canvas>
+       <canvas id="grafico" width="800" height="400"></canvas>
+
 
         <p class="total">💰 Total Geral: R$ <?= number_format($totalGeral,2,',','.') ?></p>
     <?php endif; ?>
@@ -181,7 +182,7 @@ const grafico = new Chart(ctx, {
                 display: true,
                 text: 'Produtos Mais Vendidos',
                 color: '#145a40',
-                font: { size: 18, weight: 'bold' }
+                font: { size: 20, weight: 'bold' }
             }
         },
         scales: {
