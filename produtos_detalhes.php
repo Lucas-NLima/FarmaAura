@@ -29,11 +29,19 @@ if(isset($_POST['adicionar'])){
 
     // Baixa no estoque
     if($produto['quantidade']>0){
-        $produtoController->editar(
-            $produto['nome'], $produto['tipo'], $produto['quantidade']-1,
-            $produto['validade'], $produto['marca'], $produto['preco'],
-            $produto['formapagamento'], $produto['id']
-        );
+       $produtoController->editar(
+    $produto['nome'],
+    $produto['tipo'],
+    $produto['quantidade'] - 1,
+    $produto['validade'],
+    $produto['marca'],
+    $produto['preco'],
+    $produto['formapagamento'] ?? '',
+    $produto['imagem'] ?? 'default.png', // adiciona o parâmetro da imagem
+     $produto['id']
+   
+);
+
     }
     header("Location: index.php"); // Redireciona para a página inicial
     exit;

@@ -45,8 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['finalizar'])) {
             $p['marca'], 
             $p['preco'],
             $formaPagamento, 
-            $p['id'], 
-            $p['imagem'] ?? ''
+            $p['imagem'] ?? '',
+            $p['id']
+            
         );
 
         // Registra a venda no banco

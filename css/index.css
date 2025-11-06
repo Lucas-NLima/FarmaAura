@@ -324,3 +324,11 @@ body {
     background-color: #145a40;
 }
 
+.nossosprodutos {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 3rem;
+    color: #d3b405c5;
+    font-weight: 700;
+    text-shadow: 3px 3px 3px #818075;
+}

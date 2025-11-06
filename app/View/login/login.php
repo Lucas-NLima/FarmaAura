@@ -8,6 +8,9 @@
 </head>
 <body>
     
+<div style="position:fixed; top:20px; left:20px; z-index:9999;">
+    <button id="acessibilidadeBtn" class="botao">♿ Acessibilidade</button>
+</div>
 
 
 <?php
@@ -37,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $msg = "E-mail ou senha incorretos!";
     }
+    
 }
 ?>
 <div class="container">
@@ -56,4 +60,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 </body>
+<script>
+const btn = document.getElementById('acessibilidadeBtn');
+let modo = 0; // 0=normal, 1=daltonico, 2=cegos
+
+btn.addEventListener('click', () => {
+    modo++;
+    if(modo > 2) modo = 0;
+
+    document.body.classList.remove('acessibilidade-daltonico', 'acessibilidade-cegos');
+
+    if(modo === 1){
+        document.body.classList.add('acessibilidade-daltonico');
+        btn.textContent = "Modo Daltonico ♿";
+    } else if(modo === 2){
+        document.body.classList.add('acessibilidade-cegos');
+        btn.textContent = "Modo Leitura ♿";
+
+        // Leitura automática de página
+        let textoPagina = document.body.innerText;
+        const speech = new SpeechSynthesisUtterance(textoPagina);
+        window.speechSynthesis.cancel(); // cancela leitura anterior
+        window.speechSynthesis.speak(speech);
+    } else {
+        btn.textContent = "♿ Acessibilidade";
+    }
+});
+</script>
 </html>
